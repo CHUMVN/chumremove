@@ -599,6 +599,236 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--shadow-dark);
         }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            background: var(--bg-main);
+            padding: 6px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-concave);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            background: transparent;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            background: var(--bg-main);
+            color: var(--accent);
+            box-shadow: var(--shadow-convex);
+        }
+
+        .tab-btn .material-icons-round {
+            font-size: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Advanced Tools Styles */
+        .tools-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .tool-card {
+            background: var(--bg-main);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: var(--shadow-convex);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .tool-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .tool-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Batch Upload Area */
+        .batch-upload {
+            border: 2px dashed var(--accent);
+            border-radius: 16px;
+            padding: 32px 20px;
+            text-align: center;
+            background: var(--bg-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .batch-upload:hover {
+            background: var(--bg-main);
+            border-color: var(--accent-light);
+        }
+
+        .batch-upload.dragover {
+            background: var(--bg-main);
+            border-color: var(--success);
+        }
+
+        /* File List */
+        .file-list {
+            margin-top: 16px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--bg-main);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            box-shadow: var(--shadow-flat);
+        }
+
+        .file-thumb {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+
+        .file-size {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .file-status {
+            font-size: 18px;
+        }
+
+        .file-remove {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 4px;
+        }
+
+        /* Format Selector */
+        .format-selector {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .format-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--bg-main);
+            color: var(--text-secondary);
+            box-shadow: var(--shadow-flat);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .format-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .format-btn.active {
+            color: var(--accent);
+            box-shadow: var(--shadow-pressed);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-dark);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 16px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
     </style>
 </head>
 
@@ -624,61 +854,152 @@
     </header>
 
     <main class="container">
-        <!-- Upload Section -->
-        <section class="upload-section">
-            <div class="upload-area" id="uploadArea">
-                <div class="upload-icon">📷</div>
-                <p class="upload-title">Chọn hoặc kéo thả ảnh</p>
-                <p class="upload-hint">Hỗ trợ JPG, PNG, WebP</p>
-                <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp">
-            </div>
-        </section>
+        <!-- Tabs Navigation -->
+        <nav class="tabs-nav">
+            <button class="tab-btn active" data-tab="gemini">
+                <span class="material-icons-round">auto_fix_high</span>
+                Gemini
+            </button>
+            <button class="tab-btn" data-tab="advanced">
+                <span class="material-icons-round">build</span>
+                Tools
+            </button>
+        </nav>
 
-        <!-- Preview Section -->
-        <section class="preview-section" id="previewSection">
-            <!-- Original Image -->
-            <div class="preview-card" id="originalCard">
-                <div class="preview-header">
-                    <span class="preview-label">
-                        <span class="preview-dot original"></span>
-                        Ảnh gốc
-                    </span>
-                    <span class="preview-info" id="originalInfo"></span>
+        <!-- Tab 1: Gemini Remove -->
+        <div class="tab-content active" id="tab-gemini">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📷</div>
+                    <p class="upload-title">Chọn hoặc kéo thả ảnh</p>
+                    <p class="upload-hint">Xóa watermark Gemini AI tự động</p>
+                    <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp">
                 </div>
-                <div class="preview-image-container">
-                    <img id="originalImage" alt="Original">
-                    <div class="watermark-indicator" id="watermarkIndicator"></div>
-                </div>
-            </div>
+            </section>
 
-            <!-- Processed Result -->
-            <div class="preview-card" id="processedCard" style="display: none; margin-top: 20px;">
-                <div class="preview-header">
-                    <span class="preview-label">
-                        <span class="preview-dot processed"></span>
-                        Đã xóa watermark
-                    </span>
-                    <span class="preview-info" id="processedInfo"></span>
+            <!-- Preview Section -->
+            <section class="preview-section" id="previewSection">
+                <div class="preview-card" id="originalCard">
+                    <div class="preview-header">
+                        <span class="preview-label">
+                            <span class="preview-dot original"></span>
+                            Ảnh gốc
+                        </span>
+                        <span class="preview-info" id="originalInfo"></span>
+                    </div>
+                    <div class="preview-image-container">
+                        <img id="originalImage" alt="Original">
+                        <div class="watermark-indicator" id="watermarkIndicator"></div>
+                    </div>
                 </div>
-                <div class="preview-image-container">
-                    <img id="processedImage" alt="Processed">
-                    <div class="success-badge" id="successBadge">✓ Hoàn thành</div>
-                </div>
-            </div>
 
-            <!-- Action Buttons -->
-            <div class="action-buttons">
-                <button class="btn btn-primary" id="resetBtn">
-                    🔄 Đổi ảnh
-                </button>
-                <button class="btn btn-success" id="downloadBtn" style="display: none;">
-                    💾 Tải về
-                </button>
+                <div class="preview-card" id="processedCard" style="display: none; margin-top: 20px;">
+                    <div class="preview-header">
+                        <span class="preview-label">
+                            <span class="preview-dot processed"></span>
+                            Đã xóa watermark
+                        </span>
+                        <span class="preview-info" id="processedInfo"></span>
+                    </div>
+                    <div class="preview-image-container">
+                        <img id="processedImage" alt="Processed">
+                        <div class="success-badge" id="successBadge">✓ Hoàn thành</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="resetBtn">🔄 Đổi ảnh</button>
+                    <button class="btn btn-success" id="downloadBtn" style="display: none;">💾 Tải về</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tab 2: Advanced Tools -->
+        <div class="tab-content" id="tab-advanced">
+            <div class="tools-grid">
+                <!-- Batch Processing -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">📦</div>
+                        <div>
+                            <div class="tool-title">Batch Processing</div>
+                            <div class="tool-desc">Xử lý nhiều ảnh cùng lúc</div>
+                        </div>
+                    </div>
+                    <div class="batch-upload" id="batchUpload">
+                        <span class="material-icons-round"
+                            style="font-size: 36px; color: var(--accent);">cloud_upload</span>
+                        <p style="margin-top: 8px; font-weight: 600;">Kéo thả nhiều ảnh</p>
+                        <p style="font-size: 12px; color: var(--text-muted);">hoặc click để chọn</p>
+                        <input type="file" id="batchInput" accept="image/*" multiple hidden>
+                    </div>
+                    <div class="file-list" id="fileList"></div>
+                    <div class="progress-bar" id="batchProgress" style="display: none;">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                    <div class="action-buttons" style="margin-top: 16px;">
+                        <button class="btn btn-primary" id="processBatchBtn" style="display: none;">⚡ Xử lý tất
+                            cả</button>
+                        <button class="btn btn-success" id="downloadZipBtn" style="display: none;">📥 Tải ZIP</button>
+                    </div>
+                </div>
+
+                <!-- Custom Watermark Position -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">🎯</div>
+                        <div>
+                            <div class="tool-title">Custom Position</div>
+                            <div class="tool-desc">Tự chọn vùng watermark</div>
+                        </div>
+                    </div>
+                    <div class="batch-upload" id="customUpload">
+                        <span class="material-icons-round"
+                            style="font-size: 36px; color: var(--accent);">crop_free</span>
+                        <p style="margin-top: 8px; font-weight: 600;">Chọn ảnh để đánh dấu vùng</p>
+                        <input type="file" id="customInput" accept="image/*" hidden>
+                    </div>
+                    <div id="customPreview" style="display: none; margin-top: 16px;">
+                        <canvas id="customCanvas" style="width: 100%; border-radius: 12px; cursor: crosshair;"></canvas>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; text-align: center;">Kéo
+                            để chọn vùng watermark</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="processCustomBtn">⚡ Xóa vùng đã chọn</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Converter -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">🔄</div>
+                        <div>
+                            <div class="tool-title">Format Converter</div>
+                            <div class="tool-desc">Chuyển đổi định dạng ảnh</div>
+                        </div>
+                    </div>
+                    <div class="batch-upload" id="formatUpload">
+                        <span class="material-icons-round"
+                            style="font-size: 36px; color: var(--accent);">swap_horiz</span>
+                        <p style="margin-top: 8px; font-weight: 600;">Chọn ảnh để chuyển đổi</p>
+                        <input type="file" id="formatInput" accept="image/*" multiple hidden>
+                    </div>
+                    <div class="format-selector" id="formatSelector" style="display: none;">
+                        <button class="format-btn active" data-format="png">PNG</button>
+                        <button class="format-btn" data-format="jpeg">JPG</button>
+                        <button class="format-btn" data-format="webp">WebP</button>
+                    </div>
+                    <div class="file-list" id="formatFileList"></div>
+                    <div class="action-buttons" style="margin-top: 16px;">
+                        <button class="btn btn-success" id="convertBtn" style="display: none;">📥 Tải về</button>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
 
         <!-- Features -->
-        <section class="features">
+        <section class="features" style="margin-top: 32px;">
             <div class="feature">
                 <div class="feature-icon">⚡</div>
                 <div class="feature-title">Siêu nhanh</div>
@@ -708,13 +1029,13 @@
     </div>
 
     <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script>
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const html = document.documentElement;
 
-        // Check saved theme or default to dark
         const savedTheme = localStorage.getItem('theme') || 'dark';
         html.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
@@ -730,6 +1051,257 @@
         function updateThemeIcon(theme) {
             themeIcon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
         }
+
+        // Tabs Switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        // ========== BATCH PROCESSING ==========
+        let batchFiles = [];
+        let processedFiles = [];
+        const batchUpload = document.getElementById('batchUpload');
+        const batchInput = document.getElementById('batchInput');
+        const fileList = document.getElementById('fileList');
+        const processBatchBtn = document.getElementById('processBatchBtn');
+        const downloadZipBtn = document.getElementById('downloadZipBtn');
+        const batchProgress = document.getElementById('batchProgress');
+        const progressFill = document.getElementById('progressFill');
+
+        batchUpload.addEventListener('click', () => batchInput.click());
+        batchUpload.addEventListener('dragover', e => { e.preventDefault(); batchUpload.classList.add('dragover'); });
+        batchUpload.addEventListener('dragleave', () => batchUpload.classList.remove('dragover'));
+        batchUpload.addEventListener('drop', e => {
+            e.preventDefault();
+            batchUpload.classList.remove('dragover');
+            handleBatchFiles(e.dataTransfer.files);
+        });
+        batchInput.addEventListener('change', e => handleBatchFiles(e.target.files));
+
+        function handleBatchFiles(files) {
+            batchFiles = [...batchFiles, ...Array.from(files).filter(f => f.type.startsWith('image/'))];
+            renderFileList();
+            processBatchBtn.style.display = batchFiles.length ? 'flex' : 'none';
+        }
+
+        function renderFileList() {
+            fileList.innerHTML = batchFiles.map((f, i) => `
+                <div class="file-item">
+                    <img class="file-thumb" src="${URL.createObjectURL(f)}">
+                    <div class="file-info">
+                        <div class="file-name">${f.name}</div>
+                        <div class="file-size">${(f.size / 1024).toFixed(1)} KB</div>
+                    </div>
+                    <span class="file-status" id="status-${i}">⏳</span>
+                    <button class="file-remove" onclick="removeBatchFile(${i})">×</button>
+                </div>
+            `).join('');
+        }
+
+        window.removeBatchFile = i => {
+            batchFiles.splice(i, 1);
+            renderFileList();
+            processBatchBtn.style.display = batchFiles.length ? 'flex' : 'none';
+        };
+
+        processBatchBtn.addEventListener('click', async () => {
+            processedFiles = [];
+            batchProgress.style.display = 'block';
+            for (let i = 0; i < batchFiles.length; i++) {
+                document.getElementById('status-' + i).textContent = '⚙️';
+                const canvas = await processImageFile(batchFiles[i]);
+                processedFiles.push({ name: batchFiles[i].name.replace(/\.[^.]+$/, '_clean.png'), canvas });
+                document.getElementById('status-' + i).textContent = '✅';
+                progressFill.style.width = ((i + 1) / batchFiles.length * 100) + '%';
+            }
+            downloadZipBtn.style.display = 'flex';
+        });
+
+        async function processImageFile(file) {
+            return new Promise(resolve => {
+                const reader = new FileReader();
+                reader.onload = async e => {
+                    const img = new Image();
+                    img.onload = async () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        const config = detectConfig(img.width, img.height);
+                        const position = {
+                            x: img.width - config.marginRight - config.logoSize,
+                            y: img.height - config.marginBottom - config.logoSize,
+                            width: config.logoSize, height: config.logoSize
+                        };
+                        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                        const alphaMap = await getAlphaMap(config.logoSize);
+                        removeWatermark(imageData, alphaMap, position);
+                        ctx.putImageData(imageData, 0, 0);
+                        resolve(canvas);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        downloadZipBtn.addEventListener('click', async () => {
+            const zip = new JSZip();
+            processedFiles.forEach(f => zip.file(f.name, f.canvas.toDataURL('image/png').split(',')[1], { base64: true }));
+            const blob = await zip.generateAsync({ type: 'blob' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'chum_remove_batch.zip';
+            link.click();
+        });
+
+        // ========== FORMAT CONVERTER ==========
+        let formatFiles = [];
+        let selectedFormat = 'png';
+        const formatUpload = document.getElementById('formatUpload');
+        const formatInput = document.getElementById('formatInput');
+        const formatSelector = document.getElementById('formatSelector');
+        const formatFileList = document.getElementById('formatFileList');
+        const convertBtn = document.getElementById('convertBtn');
+
+        formatUpload.addEventListener('click', () => formatInput.click());
+        formatInput.addEventListener('change', e => {
+            formatFiles = Array.from(e.target.files).filter(f => f.type.startsWith('image/'));
+            formatSelector.style.display = formatFiles.length ? 'flex' : 'none';
+            convertBtn.style.display = formatFiles.length ? 'flex' : 'none';
+            formatFileList.innerHTML = formatFiles.map(f => `
+                <div class="file-item">
+                    <img class="file-thumb" src="${URL.createObjectURL(f)}">
+                    <div class="file-info">
+                        <div class="file-name">${f.name}</div>
+                        <div class="file-size">${(f.size / 1024).toFixed(1)} KB</div>
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        document.querySelectorAll('.format-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedFormat = btn.dataset.format;
+            });
+        });
+
+        convertBtn.addEventListener('click', async () => {
+            const zip = new JSZip();
+            for (const file of formatFiles) {
+                const canvas = await loadImageToCanvas(file);
+                const mimeType = 'image/' + selectedFormat;
+                const ext = selectedFormat === 'jpeg' ? 'jpg' : selectedFormat;
+                const dataUrl = canvas.toDataURL(mimeType, 0.92);
+                zip.file(file.name.replace(/\.[^.]+$/, '.' + ext), dataUrl.split(',')[1], { base64: true });
+            }
+            const blob = await zip.generateAsync({ type: 'blob' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'converted_images.zip';
+            link.click();
+        });
+
+        function loadImageToCanvas(file) {
+            return new Promise(resolve => {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        canvas.getContext('2d').drawImage(img, 0, 0);
+                        resolve(canvas);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // ========== CUSTOM POSITION ==========
+        let customImage = null;
+        let selection = { x: 0, y: 0, w: 0, h: 0 };
+        let isSelecting = false;
+        const customUpload = document.getElementById('customUpload');
+        const customInput = document.getElementById('customInput');
+        const customPreview = document.getElementById('customPreview');
+        const customCanvas = document.getElementById('customCanvas');
+        const customCtx = customCanvas.getContext('2d');
+
+        customUpload.addEventListener('click', () => customInput.click());
+        customInput.addEventListener('change', e => {
+            if (!e.target.files[0]) return;
+            const reader = new FileReader();
+            reader.onload = ev => {
+                customImage = new Image();
+                customImage.onload = () => {
+                    customCanvas.width = customImage.width;
+                    customCanvas.height = customImage.height;
+                    customCtx.drawImage(customImage, 0, 0);
+                    customPreview.style.display = 'block';
+                    customUpload.style.display = 'none';
+                };
+                customImage.src = ev.target.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        });
+
+        customCanvas.addEventListener('mousedown', e => {
+            const rect = customCanvas.getBoundingClientRect();
+            const scaleX = customCanvas.width / rect.width;
+            const scaleY = customCanvas.height / rect.height;
+            selection.x = (e.clientX - rect.left) * scaleX;
+            selection.y = (e.clientY - rect.top) * scaleY;
+            isSelecting = true;
+        });
+
+        customCanvas.addEventListener('mousemove', e => {
+            if (!isSelecting) return;
+            const rect = customCanvas.getBoundingClientRect();
+            const scaleX = customCanvas.width / rect.width;
+            const scaleY = customCanvas.height / rect.height;
+            selection.w = (e.clientX - rect.left) * scaleX - selection.x;
+            selection.h = (e.clientY - rect.top) * scaleY - selection.y;
+            customCtx.drawImage(customImage, 0, 0);
+            customCtx.strokeStyle = '#818cf8';
+            customCtx.lineWidth = 3;
+            customCtx.setLineDash([8, 4]);
+            customCtx.strokeRect(selection.x, selection.y, selection.w, selection.h);
+        });
+
+        customCanvas.addEventListener('mouseup', () => isSelecting = false);
+
+        document.getElementById('processCustomBtn').addEventListener('click', () => {
+            const x = Math.min(selection.x, selection.x + selection.w);
+            const y = Math.min(selection.y, selection.y + selection.h);
+            const w = Math.abs(selection.w);
+            const h = Math.abs(selection.h);
+            if (w < 10 || h < 10) { alert('Vui lòng chọn vùng lớn hơn'); return; }
+            const imageData = customCtx.getImageData(x, y, w, h);
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                const avg = (imageData.data[i] + imageData.data[i + 1] + imageData.data[i + 2]) / 3;
+                if (avg > 200) {
+                    imageData.data[i] = imageData.data[i] * 0.7;
+                    imageData.data[i + 1] = imageData.data[i + 1] * 0.7;
+                    imageData.data[i + 2] = imageData.data[i + 2] * 0.7;
+                }
+            }
+            customCtx.putImageData(imageData, x, y);
+            const link = document.createElement('a');
+            link.download = 'custom_removed.png';
+            link.href = customCanvas.toDataURL('image/png');
+            link.click();
+        });
     </script>
 </body>
 
